@@ -1,6 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/
-v2.0 | 20110126
-License: none (public domain)
+   v2.0 | 20110126
+   License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -92,17 +92,12 @@ nav ul {
 }
 nav li {
 	padding: 0 10px;
-}
-
-.nav-link {
-	color: black;
 	font-size: 1.2em;
-	text-decoration: none;
-}
-.nav-link:hover {
-	color: #b1663c;
 }
 
+li:hover {
+	color: #B1663C;
+}
 #introduction {
 	display: flex;
 	align-items: center;
