@@ -90,14 +90,19 @@ nav ul {
 	list-style-type: none;
 
 }
+
 nav li {
 	padding: 0 10px;
+}
+.nav-link {
+	color: black;
 	font-size: 1.2em;
+	text-decoration: none;
+}
+.nav-link:hover {
+	color: #b1663c;
 }
 
-li:hover {
-	color: #B1663C;
-}
 #introduction {
 	display: flex;
 	align-items: center;
