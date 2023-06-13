@@ -1,3 +1,10 @@
+// Déclaration des variables
+const $loginForm = document.querySelector("#js-login-form");
+const $errorMessage = document.querySelector("#js-error-message");
+const $connectButton = document.querySelector("#js-connect-button");
+const $emailField = $loginForm.querySelector("#js-email");
+const $passwordField = $loginForm.querySelector("#js-password");
+
 /**
  * Gère la soumission du formulaire de connexion.
  * @param {Event} event - L'événement de soumission du formulaire.
@@ -7,29 +14,11 @@ const handleLoginFormSubmit = async (event) => {
     event.preventDefault();
 
     /**
-     * L'élément du formulaire de connexion.
-     * @type {HTMLFormElement}
-     */
-    const $loginForm = document.querySelector("#js-login-form");
-
-    /**
-     * L'élément affichant les messages d'erreur.
-     * @type {HTMLElement}
-     */
-    const $errorMessage = document.querySelector("#js-error-message");
-
-    /**
-     * Le bouton de connexion.
-     * @type {HTMLButtonElement}
-     */
-    const $connectButton = document.querySelector("#js-connect-button");
-
-    /**
      * Récupère les valeurs des champs email et password.
      * @type {string}
      */
-    const $email = $loginForm.querySelector("#js-email").value;
-    const $password = $loginForm.querySelector("#js-password").value;
+    const $email = $emailField.value;
+    const $password = $passwordField.value;
 
     try {
         const response = await fetch("http://localhost:5678/api/users/login", {
@@ -55,20 +44,17 @@ const handleLoginFormSubmit = async (event) => {
 
             localStorage.setItem("token", $token);
             window.location.href = "./index.html";
-            console.log($token);
         } else {
             $errorMessage.textContent = "Erreur dans l'identifiant ou le mot de passe";
-            $connectButton.classList.add("shake");
+            $connectButton.classList.add("wrong-mdp-id");
 
             setTimeout(() => {
-                $connectButton.classList.remove("shake");
+                $connectButton.classList.remove("wrong-mdp-id");
             }, 500);
         }
     } catch (error) {
-        console.log(error);
     }
 };
 
 // Écoute l'événement de soumission du formulaire de connexion.
-const $loginForm = document.querySelector("#js-login-form");
 $loginForm.addEventListener("submit", handleLoginFormSubmit);

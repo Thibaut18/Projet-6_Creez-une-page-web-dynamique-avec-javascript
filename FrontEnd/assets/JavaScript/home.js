@@ -1,16 +1,19 @@
+// Déclaration des variables du DOM
+const $gallery = document.querySelector('.gallery');
+const $buttonsContainer = document.querySelector('#js-filter-box');
+const $allCategoriesButton = document.querySelector('#all-filter');
+
 /**
  * Récupère les œuvres depuis l'API.
  * @async
  * @returns {Promise<object[]>} La liste des œuvres.
- * @throws {Error} Si la requête pour récupérer les œuvres échoue.
  */
 async function fetchWorks() {
     try {
         const $response = await fetch('http://localhost:5678/api/works');
-        return await $response.json();
+        return $response.json();
     } catch (error) {
-        console.error(error);
-        throw new Error('Échec de la récupération des œuvres');
+        console.error(error)
     }
 }
 
@@ -18,15 +21,13 @@ async function fetchWorks() {
  * Récupère les catégories depuis l'API.
  * @async
  * @returns {Promise<object[]>} La liste des catégories.
- * @throws {Error} Si la requête pour récupérer les catégories échoue.
  */
 async function fetchCategories() {
     try {
         const $response = await fetch('http://localhost:5678/api/categories');
-        return await $response.json();
+        return $response.json();
     } catch (error) {
-        console.error(error);
-        throw new Error('Échec de la récupération des catégories');
+        console.error(error)
     }
 }
 
@@ -35,15 +36,13 @@ async function fetchCategories() {
  * @param {object[]} items - Les éléments à afficher dans la galerie.
  */
 function renderGallery(items) {
-    const $gallery = document.querySelector('.gallery');
     $gallery.innerHTML = '';
-
     items.forEach((item) => {
         const $galleryItem = document.createElement('div');
         $galleryItem.classList.add('box');
         $galleryItem.innerHTML = `
             <img src="${item.imageUrl}" alt="${item.title}" class="gallery-img">
-            <h3 class="gallery-title">${item.title}</h3>
+            <h3 class="gallery-img-title">${item.title}</h3>
         `;
         $gallery.appendChild($galleryItem);
     });
@@ -51,13 +50,10 @@ function renderGallery(items) {
 
 // Récupère les œuvres et les catégories, puis affiche la galerie.
 fetchWorks().then((works) => {
-    const $allCategoriesButton = document.querySelector('#all-filter');
     renderGallery(works); // Affiche les œuvres initiales
-
     // Gestionnaire d'événements pour le bouton "Tous les filtres"
     $allCategoriesButton.addEventListener('click', () => {
         renderGallery(works); // Affiche toutes les œuvres lors du clic sur "Tous les filtres"
-
         const $filterButtons = document.querySelectorAll('.button-filter');
         $filterButtons.forEach((btn) => {
             btn.classList.remove('active');
@@ -67,8 +63,6 @@ fetchWorks().then((works) => {
 });
 
 fetchCategories().then((categories) => {
-    const $buttonsContainer = document.querySelector('#js-filter-box');
-
     /**
      * Gère l'événement de clic sur un bouton de filtre.
      * @param {object} category - La catégorie associée au bouton.
@@ -78,7 +72,6 @@ fetchCategories().then((categories) => {
         const $filteredWorks = $works.filter((work) => work.categoryId === category.id);
         renderGallery($filteredWorks);
     };
-
     categories.forEach((category) => {
         const $button = document.createElement('button');
         $button.innerText = category.name;
@@ -91,7 +84,6 @@ fetchCategories().then((categories) => {
             });
             $button.classList.add('active');
         });
-
         $buttonsContainer.appendChild($button);
     });
 });
