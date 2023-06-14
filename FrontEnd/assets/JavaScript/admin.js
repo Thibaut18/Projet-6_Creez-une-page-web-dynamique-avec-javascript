@@ -31,70 +31,18 @@ const modalElements = {
     barModal: document.querySelector("#js-bar-modal"),
 };
 
-/**
- * Token récupéré depuis le stockage local
- * @type {string|null}
- */
 const token = localStorage.getItem("token");
-
-/**
- * @type {HTMLElement}
- */
 const $errorTitle = document.querySelector(".bordertitle-error");
-
-/**
- * @type {HTMLElement}
- */
 const $errorTitleText = document.querySelector(".error-title-form");
-
-/**
- * @type {HTMLElement}
- */
 const $modalContainer = document.querySelector(".modal-container");
-
-/**
- * @type {NodeListOf<HTMLElement>}
- */
 const $modalTriggers = document.querySelectorAll(".modal-trigger");
-
-/**
- * @type {HTMLImageElement}
- */
 const $preview = document.getElementById("preview");
-
-/**
- * @type {HTMLElement}
- */
 const $buttonUploadPhoto = document.querySelector(".button-upload-photo");
-
-/**
- * @type {HTMLElement}
- */
 const $textFormatImg = document.querySelector("#text-format-img");
-
-/**
- * @type {HTMLElement}
- */
 const $previewDeleteBtn = document.querySelector("#js-delete-preview");
-
-/**
- * @type {HTMLInputElement}
- */
 const $fileInput = document.querySelector("#file-input");
-
-/**
- * @type {HTMLInputElement}
- */
 const $titreInput = document.getElementById("titre");
-
-/**
- * @type {HTMLSelectElement}
- */
 const $categorieSelect = document.getElementById("categorie");
-
-/**
- * @type {HTMLElement}
- */
 const $submitBtn = document.querySelector(".confirm-button-form-add");
 
 document.addEventListener('DOMContentLoaded', (event) => {
