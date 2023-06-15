@@ -1,26 +1,3 @@
-/**
- * Élément de la galerie dans la modal
- * @typedef {Object} GalleryModalItem
- * @property {string} id - L'identifiant de l'élément
- * @property {string} imageUrl - L'URL de l'image
- * @property {string} title - Le titre de l'image
- */
-
-/**
- * Éléments de la modal
- * @typedef {Object} ModalElements
- * @property {HTMLElement} galleryModal - Élément de la galerie dans la modal
- * @property {HTMLElement} addPicture - Bouton d'ajout d'une image
- * @property {HTMLElement} modalTitle - Titre de la modal
- * @property {HTMLElement} deleteGallery - Bouton de suppression de la galerie
- * @property {HTMLElement} formAddPicture - Formulaire d'ajout d'une image
- * @property {HTMLElement} backGallery - Bouton de retour à la galerie
- * @property {HTMLElement} barModal - Barre de la modal
- */
-
-/**
- * @type {ModalElements}
- */
 const modalElements = {
     galleryModal: document.querySelector("#js-gallery-modal"),
     addPicture: document.querySelector("#js-add-picture"),

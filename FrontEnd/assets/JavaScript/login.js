@@ -53,6 +53,7 @@ const handleLoginFormSubmit = async (event) => {
             }, 500);
         }
     } catch (error) {
+        console.error(error);
     }
 };
 
