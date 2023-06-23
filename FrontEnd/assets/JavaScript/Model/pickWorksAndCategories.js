@@ -3,10 +3,11 @@
  * @async
  * @returns {Promise<object[]>} La liste des œuvres.
  */
+//getAllWorks
 export async function fetchWorks() {
     try {
-        const $response = await fetch('http://localhost:5678/api/works');
-        return $response.json();
+        const response = await fetch('http://localhost:5678/api/works');
+        return response.json();
     } catch (error) {
         console.error(error)
     }
@@ -17,10 +18,12 @@ export async function fetchWorks() {
  * @async
  * @returns {Promise<object[]>} La liste des catégories.
  */
+
+//getAllCategories
 export async function fetchCategories() {
     try {
-        const $response = await fetch('http://localhost:5678/api/categories');
-        return $response.json();
+        const response = await fetch('http://localhost:5678/api/categories');
+        return response.json();
     } catch (error) {
         console.error(error)
     }
