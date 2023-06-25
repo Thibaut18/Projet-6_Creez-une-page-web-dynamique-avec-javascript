@@ -8,7 +8,7 @@ const $allCategoriesButton = document.querySelector('#all-filter');
  * @async
  * @returns {Promise<object[]>} La liste des œuvres.
  */
-async function fetchWorks() {
+async function getAllWorks() {
     try {
         const $response = await fetch('http://localhost:5678/api/works');
         return $response.json();
@@ -22,7 +22,7 @@ async function fetchWorks() {
  * @async
  * @returns {Promise<object[]>} La liste des catégories.
  */
-async function fetchCategories() {
+async function getAllCategories() {
     try {
         const $response = await fetch('http://localhost:5678/api/categories');
         return $response.json();
@@ -49,7 +49,7 @@ function renderGallery(items) {
 }
 
 // Récupère les œuvres et les catégories, puis affiche la galerie.
-fetchWorks().then((works) => {
+getAllWorks().then((works) => {
     renderGallery(works); // Affiche les œuvres initiales
     // Gestionnaire d'événements pour le bouton "Tous les filtres"
     $allCategoriesButton.addEventListener('click', () => {
@@ -62,7 +62,7 @@ fetchWorks().then((works) => {
     });
 });
 
-fetchCategories().then((categories) => {
+getAllCategories().then((categories) => {
     /**
      * Gère l'événement de clic sur un bouton de filtre.
      * @param {object} category - La catégorie associée au bouton.
