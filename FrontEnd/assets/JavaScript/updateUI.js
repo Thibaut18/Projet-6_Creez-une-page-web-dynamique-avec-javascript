@@ -1,5 +1,5 @@
 /**
- * Met à jour l'interface utilisateur (UI) si l'utilisateur est connecté (admin)
+ * Met à jour l'interface utilisateur si l'utilisateur est connecté (admin)
  */
 const updateUI = () => {
     const $filter = document.querySelector("#js-filter-box");

@@ -1,5 +1,5 @@
 const token = localStorage.getItem("token");
-console.log(token);
+
 /**
  * Vérifie si l'utilisateur est connecté (admin)
  * @returns {boolean} - True si l'utilisateur est connecté, sinon False

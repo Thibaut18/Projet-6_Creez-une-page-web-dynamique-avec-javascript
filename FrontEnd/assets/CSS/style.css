@@ -402,7 +402,7 @@ footer nav ul {
 }
 
 #js-button-edit-profil {
-	padding-left: 4rem;
+    padding-left: 4rem;
 }
 
 .edit-mode {
@@ -796,4 +796,12 @@ footer nav ul {
 
 .bordertitle-error.active {
     border: 1px solid #d65353;
+}
+
+@media screen and (max-width: 768px) {
+    .gallery-modal {
+        padding: 0 1.5rem;
+        justify-content: center;
+        max-height: 300px;
+    }
 }

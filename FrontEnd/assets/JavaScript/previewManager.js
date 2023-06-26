@@ -36,16 +36,32 @@ $previewDeleteBtn.addEventListener("click", (e) => {
     $errorTitleText.classList.remove("active");
 });
 
+// Événement de chargement de la page
+document.addEventListener("DOMContentLoaded", () => {
+    const $uploadButton = document.querySelector("#uploadButton");
+
+    if ($uploadButton) {
+        $uploadButton.addEventListener("click", function () {
+            $fileInput.click();
+        });
+    }
+});
+
 // Événement de changement de l'input de sélection de fichier pour la prévisualisation de l'image
 $fileInput.addEventListener("change", previewImage);
 
-getAllCategories().then((data) => {
-    const categories = document.querySelector("#categorie");
+// Fonction pour générer les options de catégories
+function generateCategoryOptions(data) {
+    const $categories = document.querySelector("#categorie");
     // Création des options du select à partir des catégories de l'API
     for (let i = 0; i < data.length; i++) {
         const option = document.createElement("option");
         option.value = data[i].id;
         option.textContent = data[i].name;
-        categories.appendChild(option);
+        $categories.appendChild(option);
     }
+}
+
+getAllCategories().then((data) => {
+    generateCategoryOptions(data);
 });

@@ -17,8 +17,8 @@ const handleLoginFormSubmit = async (event) => {
      * Récupère les valeurs des champs email et password.
      * @type {string}
      */
-    const $email = $emailField.value;
-    const $password = $passwordField.value;
+    const email = $emailField.value;
+    const password = $passwordField.value;
 
     try {
         const response = await fetch("http://localhost:5678/api/users/login", {
@@ -28,8 +28,8 @@ const handleLoginFormSubmit = async (event) => {
                 Accept: "application/json",
             },
             body: JSON.stringify({
-                email: $email,
-                password: $password,
+                email: email,
+                password: password,
             }),
         });
 
@@ -40,9 +40,9 @@ const handleLoginFormSubmit = async (event) => {
              * Le token d'authentification.
              * @type {string}
              */
-            const $token = data.token;
+            const token = data.token;
 
-            localStorage.setItem("token", $token);
+            localStorage.setItem("token", token);
             window.location.href = "./index.html";
         } else {
             $errorMessage.textContent = "Erreur dans l'identifiant ou le mot de passe";

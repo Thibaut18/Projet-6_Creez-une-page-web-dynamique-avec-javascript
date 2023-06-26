@@ -1,3 +1,13 @@
+const $modalElements = {
+    galleryModal: document.querySelector("#js-gallery-modal"),
+    addPicture: document.querySelector("#js-add-picture"),
+    modalTitle: document.querySelector("#js-modal-title"),
+    deleteGallery: document.querySelector("#js-delete-gallery"),
+    formAddPicture: document.querySelector("#js-form-add-img"),
+    backGallery: document.querySelector("#js-back-to-gallery"),
+    barModal: document.querySelector("#js-bar-modal"),
+};
+
 const $errorTitle = document.querySelector(".bordertitle-error");
 const $errorTitleText = document.querySelector(".error-title-form");
 const $modalContainer = document.querySelector(".modal-container");
@@ -6,7 +16,6 @@ const $fileInput = document.querySelector("#file-input");
 const $titreInput = document.getElementById("titre");
 const $categorieSelect = document.getElementById("categorie");
 const $submitBtn = document.querySelector(".confirm-button-form-add");
-
 
 // Événement de chargement de la page
 window.addEventListener("load", () => {
@@ -30,22 +39,22 @@ getAllWorks().then((data) => {
 
 getAllWorks().then(() => {
     // Passage à la section d'ajout d'une photo dans la modal
-    modalElements.addPicture.addEventListener("click", () => {
-        modalElements.modalTitle.textContent = "Ajout Photo";
-        modalElements.galleryModal.style.display = "none";
-        modalElements.deleteGallery.style.display = "none";
-        modalElements.addPicture.style.display = "none";
-        modalElements.formAddPicture.style.display = "flex";
-        modalElements.backGallery.style.display = "block";
-        modalElements.barModal.style.display = "none";
+    $modalElements.addPicture.addEventListener("click", () => {
+        $modalElements.modalTitle.textContent = "Ajout Photo";
+        $modalElements.galleryModal.style.display = "none";
+        $modalElements.deleteGallery.style.display = "none";
+        $modalElements.addPicture.style.display = "none";
+        $modalElements.formAddPicture.style.display = "flex";
+        $modalElements.backGallery.style.display = "block";
+        $modalElements.barModal.style.display = "none";
     });
 
     // Retour à la galerie dans la modal avec mise à jour
-    modalElements.backGallery.addEventListener("click", () => {
+    $modalElements.backGallery.addEventListener("click", () => {
         updateModalElements();
 
         getAllWorks().then((data) => {
-            modalElements.galleryModal.innerHTML = "";
+            $modalElements.galleryModal.innerHTML = "";
             createGalleryModalItems(data);
         });
     });
@@ -70,20 +79,20 @@ const addGalleryItem = async (formData) => {
 
         if (response.status === 201) {
             // Mise à jour de la galerie dans la modal en cas de succès
-            fetchWorks().then((data) => {
+            getAllWorks().then((data) => {
                 updateModalElements(data);
             });
 
             // Petite attente pour mettre à jour la galerie dans la modal et permettre une transition fluide
             setTimeout(() => {
                 // Mise à jour de la galerie dans la modal
-                modalElements.modalTitle.textContent = "Galerie photo";
-                modalElements.galleryModal.style.display = "flex";
-                modalElements.deleteGallery.style.display = "block";
-                modalElements.addPicture.style.display = "block";
-                modalElements.formAddPicture.style.display = "none";
-                modalElements.backGallery.style.display = "none";
-                modalElements.barModal.style.display = "block";
+                $modalElements.modalTitle.textContent = "Galerie photo";
+                $modalElements.galleryModal.style.display = "flex";
+                $modalElements.deleteGallery.style.display = "block";
+                $modalElements.addPicture.style.display = "block";
+                $modalElements.formAddPicture.style.display = "none";
+                $modalElements.backGallery.style.display = "none";
+                $modalElements.barModal.style.display = "block";
 
                 // Suppression de l'image de prévisualisation
                 $preview.style.display = "none";
@@ -134,7 +143,7 @@ $submitBtn.addEventListener("click", (e) => {
                 renderGallery(data);
                 $modalContainer.classList.remove("active");
 
-                modalElements.galleryModal.innerHTML = "";
+                $modalElements.galleryModal.innerHTML = "";
                 createGalleryModalItems(data);
             });
         });
@@ -158,14 +167,14 @@ $formAddPicture.addEventListener("input", () => {
 });
 
 // Suppression de toute la galerie et mise à jour de l'API, de la galerie dans la modal et de la galerie principale
-modalElements.deleteGallery.addEventListener("click", () => {
-    fetchWorks()
+$modalElements.deleteGallery.addEventListener("click", () => {
+    getAllWorks()
         .then((data) => {
             return Promise.all(data.map((element) => deleteGalleryItem(element.id)));
         })
         .then(() => {
             getAllWorks().then((data) => {
-                modalElements.galleryModal.innerHTML = "";
+                $modalElements.galleryModal.innerHTML = "";
                 createGalleryModalItems(data);
                 renderGallery(data);
             });
