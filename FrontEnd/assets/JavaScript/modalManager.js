@@ -23,11 +23,6 @@ $modalTriggers.forEach(($trigger) =>
     })
 );
 
-getAllWorks().then((data) => {
-    // Mise à jour de la galerie dans la modal
-    createGalleryModalItems(data);
-});
-
 /**
  * Met à jour la galerie et l'interface utilisateur.
  */

@@ -97,3 +97,8 @@ $modalElements.deleteGallery.addEventListener("click", () => {
             });
         });
 });
+
+getAllWorks().then((data) => {
+    // Mise à jour de la galerie dans la modal
+    createGalleryModalItems(data);
+});
