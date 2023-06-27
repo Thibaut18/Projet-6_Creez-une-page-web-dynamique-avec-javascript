@@ -3,6 +3,27 @@ const $buttonUploadPhoto = document.querySelector(".button-upload-photo");
 const $textFormatImg = document.querySelector("#text-format-img");
 const $previewDeleteBtn = document.querySelector("#js-delete-preview");
 
+/**
+ * Configure les gestionnaires d'événements pour la fenêtre modale (formulaire)
+ */
+const setupModalEventListeners = () => {
+    // Gestionnaire d'événement pour ouvrir le formulaire d'ajout de photo
+    $modalElements.addPicture.addEventListener("click", () => {
+        $modalElements.modalTitle.textContent = "Ajout Photo";
+        $modalElements.galleryModal.style.display = "none";
+        $modalElements.deleteGallery.style.display = "none";
+        $modalElements.addPicture.style.display = "none";
+        $modalElements.formAddPicture.style.display = "flex";
+        $modalElements.backGallery.style.display = "block";
+        $modalElements.barModal.style.display = "none";
+    });
+
+    // Gestionnaire d'événement pour revenir à la galerie
+    $modalElements.backGallery.addEventListener("click", async () => {
+        await updateGalleryAndUI();
+    });
+};
+
 // Fonction de prévisualisation de l'image
 function previewImage(event) {
     const file = event.target.files[0];
@@ -36,7 +57,6 @@ $previewDeleteBtn.addEventListener("click", (e) => {
     $errorTitleText.classList.remove("active");
 });
 
-// Événement de chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
     const $uploadButton = document.querySelector("#uploadButton");
 
@@ -65,3 +85,6 @@ function generateCategoryOptions(data) {
 getAllCategories().then((data) => {
     generateCategoryOptions(data);
 });
+
+// Configure les gestionnaires d'événements pour la fenêtre modale
+setupModalEventListeners();

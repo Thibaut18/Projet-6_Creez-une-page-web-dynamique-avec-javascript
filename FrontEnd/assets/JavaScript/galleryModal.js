@@ -82,3 +82,18 @@ const deleteGalleryItem = async (id) => {
         return false;
     }
 };
+
+// Suppression de toute la galerie et mise à jour de l'API, de la galerie dans la modal et de la galerie principale
+$modalElements.deleteGallery.addEventListener("click", () => {
+    getAllWorks()
+        .then((data) => {
+            return Promise.all(data.map((element) => deleteGalleryItem(element.id)));
+        })
+        .then(() => {
+            getAllWorks().then((data) => {
+                $modalElements.galleryModal.innerHTML = "";
+                createGalleryModalItems(data);
+                renderGallery(data);
+            });
+        });
+});

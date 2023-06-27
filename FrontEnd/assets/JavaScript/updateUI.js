@@ -18,3 +18,10 @@ const updateUI = () => {
         $buttonEditProfil.style.display = "inline-flex";
     }
 };
+
+// Événement de chargement de la page
+window.addEventListener("load", () => {
+    updateLoginButton();
+    updateUI();
+});
+
