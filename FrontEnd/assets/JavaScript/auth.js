@@ -25,7 +25,6 @@ const updateLoginButton = () => {
         $loginButton.innerText = "logout";
         $loginButton.addEventListener("click", () => {
             logOut();
-            $loginButton.innerText = "Connexion";
         });
     }
 };

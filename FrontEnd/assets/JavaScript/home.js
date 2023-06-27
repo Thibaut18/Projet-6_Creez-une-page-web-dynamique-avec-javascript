@@ -50,7 +50,7 @@ function renderGallery(items) {
     });
 }
 
-// Récupère les œuvres et les catégories, puis affiche la galerie.
+// Récupère les œuvres, puis affiche la galerie.
 getAllWorks().then((works) => {
     renderGallery(works); // Affiche les œuvres initiales
     // Gestionnaire d'événements pour le bouton "Tous les filtres"
@@ -65,13 +65,9 @@ getAllWorks().then((works) => {
 });
 
 getAllCategories().then((categories) => {
-    /**
-     * Gère l'événement de clic sur un bouton de filtre.
-     * @param {object} category - La catégorie associée au bouton.
-     */
     const filterButtonClickHandler = async (category) => {
-        const works = await getAllWorks();
-        const filteredWorks = works.filter((work) => work.categoryId === category.id);
+        const allWorks = await getAllWorks();
+        const filteredWorks = allWorks.filter((work) => work.categoryId === category.id);
         renderGallery(filteredWorks);
     };
     categories.forEach((category) => {
