@@ -8,14 +8,13 @@ const createGalleryModalItems = (data) => {
 
     for (const item of data) {
         const $boxModal = document.createElement("div");
-        $boxModal.classList.add("box-modal"); // Ajouter la classe CSS
-        $boxModal.setAttribute("data-id", item.id); // Ajouter un attribut data-id avec l'id de l'élément
-
+        $boxModal.classList.add("box-modal");
+        $boxModal.setAttribute("data-id", item.id);
         // Créer une nouvelle image pour chaque élément de la galerie
         const $modalItemImg = document.createElement("img");
-        $modalItemImg.classList.add("modal-item__img"); // Ajouter la classe CSS
-        $modalItemImg.src = item.imageUrl; // Définir l'URL de l'image
-        $modalItemImg.alt = item.title; // Définir le texte alternatif de l'image
+        $modalItemImg.classList.add("modal-item__img"); 
+        $modalItemImg.src = item.imageUrl; 
+        $modalItemImg.alt = item.title; 
 
         const $modalEditBtn = document.createElement("button");
         $modalEditBtn.classList.add("modal-edit-btn");
