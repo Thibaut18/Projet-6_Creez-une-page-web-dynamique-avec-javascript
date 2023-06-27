@@ -15,7 +15,6 @@ const $modalTriggers = document.querySelectorAll(".modal-trigger");
 const $fileInput = document.querySelector("#file-input");
 const $titreInput = document.getElementById("titre");
 const $categorieSelect = document.getElementById("categorie");
-const $submitBtn = document.querySelector(".confirm-button-form-add");
 
 // Événement de chargement de la page
 window.addEventListener("load", () => {

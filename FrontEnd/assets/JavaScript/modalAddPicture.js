@@ -1,5 +1,5 @@
 // Ajout d'une photo dans la galerie
-
+const $submitBtn = document.querySelector(".confirm-button-form-add");
 /**
  * Appelle l'API pour ajouter un nouvel élément
  * @param {FormData} formData - Les données du formulaire

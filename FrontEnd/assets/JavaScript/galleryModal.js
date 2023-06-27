@@ -60,7 +60,7 @@ const updateModalElements = (data) => {
     $modalElements.formAddPicture.style.display = "none";
     $modalElements.backGallery.style.display = "none";
     $modalElements.barModal.style.display = "block";
-    modalElements.galleryModal.innerHTML = "";
+    $modalElements.galleryModal.innerHTML = "";
     createGalleryModalItems(data);
 };
 
